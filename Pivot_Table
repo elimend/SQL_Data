@@ -1,0 +1,22 @@
+SELECT
+    category,
+    DATE_TRUNC('month', order_date) AS month,
+    SUM(sales_amount) AS total_sales
+FROM
+    sales
+GROUP BY
+    category, month
+ORDER BY
+    category, month;
+
+SELECT
+    question,
+    SUM(CASE WHEN answer = 'Yes' THEN 1 ELSE 0 END) AS yes_count,
+    SUM(CASE WHEN answer = 'No' THEN 1 ELSE 0 END) AS no_count,
+    SUM(CASE WHEN answer = 'Not sure' THEN 1 ELSE 0 END) AS not_sure_count
+FROM
+    survey_results
+GROUP BY
+    question
+ORDER BY
+    question;
