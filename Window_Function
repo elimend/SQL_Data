@@ -1,0 +1,9 @@
+SELECT
+    category,
+    order_date,
+    sales_amount,
+    SUM(sales_amount) OVER (PARTITION BY category ORDER BY order_date) AS running_total
+FROM
+    sales
+ORDER BY
+    category, order_date;
