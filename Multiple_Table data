@@ -1,0 +1,16 @@
+SELECT 
+    orders.order_id, 
+    orders.order_date, 
+    orders.total_price, 
+    customers.customer_id, 
+    customers.first_name, 
+    customers.last_name, 
+    customers.email 
+FROM 
+    orders 
+JOIN 
+    customers 
+ON 
+    orders.customer_id = customers.customer_id 
+WHERE 
+    customers.country = 'USA';
