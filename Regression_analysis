@@ -1,0 +1,27 @@
+-- Create a table to store the data for the regression analysis
+CREATE TABLE regression_data (
+    x DOUBLE PRECISION,
+    y DOUBLE PRECISION
+);
+
+-- Insert some example data into the table
+INSERT INTO regression_data (x, y) VALUES (1, 2);
+INSERT INTO regression_data (x, y) VALUES (2, 4);
+INSERT INTO regression_data (x, y) VALUES (3, 6);
+INSERT INTO regression_data (x, y) VALUES (4, 8);
+INSERT INTO regression_data (x, y) VALUES (5, 10);
+
+-- Run a linear regression on the data using the built-in regression function
+SELECT
+    slope,
+    intercept,
+    r_squared
+FROM
+    (
+        SELECT
+            regr_slope(y, x) AS slope,
+            regr_intercept(y, x) AS intercept,
+            regr_r2(y, x) AS r_squared
+        FROM
+            regression_data
+    ) regression_result;
